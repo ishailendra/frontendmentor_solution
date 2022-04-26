@@ -16,10 +16,14 @@
 .attribution {
     font-size: 11px;
     text-align: center;
+    position: absolute;
+    bottom: 2%;
+    font-size: 13px;
+    color: black;
 }
 
 .attribution a {
-    color: hsl(228, 45%, 44%);
+    color: wheat;
 }
 
 *{
