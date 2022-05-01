@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Advice generator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+<body>
+
+  <!-- Advice #Advice ID goes here -->
+
+  <!-- "Advice text goes here" -->
+  <main>
+    <div class="card">
+      <div class="title" id="advice_id"></div>
+      <div class="text" id="advice_val"></div>
+      <img class="divider--mb" src="./images/pattern-divider-mobile.svg" alt="divider">
+      <img class="divider--desktop" src="./images/pattern-divider-mobile.svg" alt="divider">
+      <div class="dice-wrapper" onclick="fetchAdvice()">
+        <img src="./images/icon-dice.svg" alt="dice" class="dice">
+      </div>
+    </div>
+
+    <!-- <div class="attribution">
+      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+      Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+  </main>
+  <script src="./src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --Logo: hsla(220, 18%, 16%, 1);
+    --DarkerTest: hsla(217, 21%, 21%, 1);
+    --Azure: hsla(212, 100%, 50%, 1);
+    --LightAzure: hsla(212, 100%, 69%, 1);
+    --Text: hsla(217, 35%, 45%, 1);
+    --JoinText: hsla(217, 20%, 51%, 1);
+    --MainBackground: hsla(226, 100%, 98%, 1);
+    --LighterBackground: hsla(0, 0%, 100%, 1);
+    --White: hsla(0, 0%, 100%, 1);
+    --Icon: #4b6a9b;
+    --HoverSwitch: hsla(220, 18%, 16%, 1);
+    --Red: hsla(0, 91%, 62%, 1);
+    --Input: hsla(220, 18%, 16%, 1);
+    font-size: 13px;
+    font-family: 'Space mono', monospace;    
+}
+
+[data-theme="dark"] {
+    --Logo: hsla(0, 0%, 100%, 1);
+    --DarkerTest: hsla(0, 0%, 100%, 1);
+    --Text: hsla(0, 0%, 100%, 1);
+    --JoinText: hsla(0, 0%, 100%, 1);
+    --MainBackground: hsla(220, 40%, 13%, 1);
+    --LighterBackground: hsla(222, 41%, 20%, 1);
+    --Icon: hsla(0, 0%, 100%, 1);
+    --HoverSwitch: hsla(222, 44%, 70%, 1);
+    --Input: hsla(0, 0%, 100%, 1);
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  box-sizing: border-box;
+  color: var(--Text);
+  transition: all 0.3s ease-in;
+}
+
+.app {
+  min-height: 100vh;
+  background-color: var(--MainBackground);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+main {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+h1, h2 {
+  color: var(--DarkerTest);
+}
+
+.switch-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.switch-wrap  p {
+  padding-right: 0.5rem;
+  color: var(--Text);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.switch-wrap button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.switch-wrap:hover {
+  cursor: pointer !important;
+  color: var(--HoverSwitch);
+}
+
+.switch-wrap:hover svg path {
+  fill: var(--HoverSwitch);
+}
+
+.card {
+  background-color: var(--LighterBackground);
+  display: flex;
+  padding: 0.65em 0.45em;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 16px 30px -10px rgba(45, 62, 122, 0.3);
+  border-radius: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.card > input {
+  width: 70%;
+  outline: none;
+  text-indent: 0.4rem;
+  border: none;
+  background-color: var(--LighterBackground);
+  color: var(--Text);
+}
+
+.card > button {
+  padding: 0.65em 0.85em;
+  border-radius: 0.5rem;
+  border: none;
+  background-color: var(--Azure);
+  color: var(--White);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.card > button:hover {
+  background-color: var(--LightAzure);
+  cursor: pointer;
+}
+
+.user-card-wrap {
+  height: unset;
+  padding: 1.5em 1.75em;
+  flex-direction: column !important;
+  align-items: unset;
+}
+
+.user-details {
+  display: flex;
+  margin-bottom: 2.5em;
+}
+
+.avatar {
+  border-radius: 50%;
+  height: 5rem;
+  width: 5rem;
+  margin-right: 1.5em;
+}
+
+.user-info {
+  display: grid;
+  grid-template-areas: 
+  'name'
+  'link'
+  'join';
+  width: 100%;
+}
+
+.user-info h2 {
+  grid-area: name;
+}
+.user-info a {
+  text-decoration: none;
+  grid-area: link;
+  color: var(--Azure);
+}
+
+.user-info p {
+  color: var(--JoinText);
+  grid-area: join;
+}
+
+.bio {
+  text-align: justify;
+  color: var(--Text);
+  margin-bottom: 2.5em;
+}
+
+.repo-details {
+  display: grid;
+  grid-template-areas: 
+  'one two three'
+  'four five six';
+  background-color: var(--MainBackground);
+  border-radius: 1rem;
+  color: var(--Text);
+  padding: 1.5em 1em;
+  margin-bottom: 2.5em;
+}
+
+.repo-details div:nth-of-type(1) {
+  grid-area: one;
+}
+
+.repo-details div:nth-of-type(2) {
+  grid-area: two;
+}
+
+.repo-details div:nth-of-type(3) {
+  grid-area: three;
+}
+
+.repo-details div:nth-of-type(4) {
+  grid-area: four;
+  color: var(--DarkerTest);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.repo-details div:nth-of-type(5) {
+  grid-area: five;
+  color: var(--DarkerTest);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.repo-details div:nth-of-type(6) {
+  grid-area: six;
+  color: var(--DarkerTest);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.other-info {
+  display: grid;
+  grid-template-areas: 
+  'loc'
+  'blog'
+  'tweet'
+  'comp';
+  color: var(--Text);
+}
+
+.other-info__not {
+  opacity: 0.6;
+}
+
+.other-info a {
+  text-decoration: none;
+}
+
+.other-info svg {
+  margin-right: 1.5em;
+}
+
+.location {
+  grid-area: loc;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.location svg {
+  margin-right: 2em;
+}
+
+.website {
+  grid-area: blog;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.twitter {
+  grid-area: tweet;
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.company {
+  grid-area: comp;
+  display: flex;
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1007px) {
+  main {
+    max-width: 37rem;
+  }
+
+  .avatar {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  .other-info {
+    grid-template-areas: 
+    'loc tweet'
+    'blog  comp';
+  }
+}
+
+@media only screen and (min-width: 1008px) {
+  main {
+    max-width: 55rem;
+  }
+
+  .avatar {
+    height: 9rem;
+    width: 9rem;
+  }
+
+  .user-info {
+    grid-template-areas:  'name join' 'link .';
+  }
+
+  .user-info h2 {
+    grid-area: name;
+    font-size: 1.25rem;
+  }
+
+  .user-info a {
+    grid-area: link;
+  }
+
+  .user-info p {
+    grid-area: join;
+  }
+
+  .bio, .repo-details, .other-info {
+    position: relative;
+    right: -10rem;
+    top: -2rem;
+    width: 70%;
+  }
+
+  .other-info {
+    grid-template-areas: 
+    'loc tweet'
+    'blog  comp';
+  }
+}
