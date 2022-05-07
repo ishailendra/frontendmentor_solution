@@ -9,7 +9,7 @@
 */
 :root {
     /* --White: #FFFFFF;
-    --black: #070724;
+    --RichBlack: #070724;
     --Arsenic: #38384F;
     --RomanSilver: #838391;
     --Moonstone: #419EBB;
@@ -74,14 +74,56 @@ h4 {
     font-weight: 700;
     line-height: 25px;
     letter-spacing: 2.6px;
+    text-transform: uppercase;
 }
 
 h4 {
     letter-spacing: 1px;
 }
 
-.toggle-item {
-    
+ul, li {
+    list-style-type: none;
+    text-decoration: none;
 }
 
-.hide {}
+.Mercury-link {
+    background-color: var(--white);
+}
+
+.Venus-link {
+    background-color: var(--venus);
+}
+
+.Earth-link {
+    background-color: var(--earth);
+}
+
+.Mars-link {
+    background-color: var(--mars);
+}
+
+.Jupiter-link {
+    background-color: var(--jupiter);
+}
+
+.Saturn-link {
+    background-color: var(--saturn);
+}
+
+.Uranus-link {
+    background-color: var(--uranus);
+}
+
+.Neptune-link {
+    background-color: var(--neptune);
+}
+
+.active::after {
+    content: '';
+    position: absolute;
+    height: 0.125rem;
+    background-color: var(--earth);
+    left: 0;
+    width: 100%;
+    top: 3.3rem;
+}

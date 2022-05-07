@@ -2,63 +2,64 @@ import styles from './Navbar.module.css';
 import '../../global.css'
 import { ReactComponent as Hamburger } from '../../assets/icon-hamburger.svg'
 import { ReactComponent as Chevron } from '../../assets/icon-chevron.svg'
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import anime from 'animejs';
 
-const Navbar = () => {
-    const [planetData, setPlanetData] = useState()
-    // const [playing, setPlaying] = useState(false);
+const Navbar = ({planetData, planetSwitch}) => {    // Destructuring props props.planetData => planetData
     const animation = useRef(null);
     const anim = useRef(null);
 
-    const getPlanetData = async () => {
-        let data = await fetch("data.json")
-            .then(res => res.json())
-        // console.log(data[0].name);
-        setPlanetData(data)
+    const [open, setOpen] = useState(false);
 
+    const switchPlanet = planet => {
+        planetSwitch(planet)
+        // let ele = document.getElementById('planet-list')
+        // ele.classList.remove('hide')
+        setOpen(prev => !prev);
+        staggeredAnime(-550, [0, -270], -50, "easeInOutExpo")
+        animation.current.play();
+        anim.current.play();
     }
-
-
-    useEffect(() => {
-        getPlanetData();
-    }, [])
 
     const staggeredAnime = (listX, itemX, stagger, ease)  => {
         let ele = document.getElementById('planet-list')
+        let elem = document.querySelectorAll("li[class^=Navbar_link-wrapper]")
+        // console.log(elem);
         animation.current = anime({
             targets: ele,
             translateX: listX,
             autoplay: false,
             easing: ease
         });
-//[-270, 0],
         anim.current = anime({
-            targets: '.toggle-item',
+            targets: elem,//'.toggle-item',
             translateX: itemX,
             delay: anime.stagger(stagger),
             easing: ease
         })
     }
     const toggleMenu = () => {
-        let ele = document.getElementById('planet-list')
+        // let ele = document.getElementById('planet-list')
         
-        if (!ele.classList.contains('hide')) {
+        if (!open) {
             staggeredAnime(2, [-270, 0], 50, "spring(1, 80, 10, 10)")
             
-
             animation.current.play();
             anim.current.play();
-            ele.classList.add('hide')
+            // ele.classList.add('hide');
+            setOpen(prev => !prev)
         }
         else {
-            ele.classList.remove('hide')
+            // ele.classList.remove('hide')
+            setOpen(prev => !prev)
+         
             staggeredAnime(-550, [0, -270], -50, "easeInOutExpo")
+         
             animation.current.play();
             anim.current.play();
         }
     }
-
+    
     return (
         <nav className={styles.navbar}>
             <div className={styles.brand}>
@@ -69,14 +70,12 @@ const Navbar = () => {
                 <ul className={styles["planet-link"]}>
                     {planetData && planetData.map((planet) => {
                         return (
-                            <>
-                                <li key={planet.name} className={`${styles["link-wrapper"]} toggle-item`}>
-                                    <div className={`${styles.circle} ${styles[`${planet.name}-link`]}`}></div>
-                                    <a href="http://locahost:3000"><h3>{planet.name}</h3></a>
+                                <li key={planet.name} className={`${styles["link-wrapper"]}`} onClick={() => switchPlanet(planet)}>
+                                    <div className={`${styles.circle} ${`${planet.name}-link`}`}></div>
+                                    <h3 className={styles.name}>{planet.name}</h3>
                                     <Chevron />
                                 </li>
 
-                            </>
                         );
                     })}
                 </ul>

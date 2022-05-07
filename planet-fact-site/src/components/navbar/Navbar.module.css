@@ -19,20 +19,20 @@
     flex-direction: column;
     align-items:center;
     transform: translateX(-550px);
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background-color: var(--black);
 }
 
-ul, li {
-    list-style-type: none;
-    text-decoration: none;
-}
-
-ul {
+/* ul {
     display: flex;
-    flex-direction: column;
-}
+    
+} */
 
 .planet-link {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
@@ -70,41 +70,8 @@ a {
     display: flex;
 }
 
-h3 {
+.name {
     font-size: 12px;
-    text-transform: uppercase;
-}
-
-.Mercury-link {
-    background-color: var(--white);
-}
-
-.Venus-link {
-    background-color: var(--venus);
-}
-
-.Earth-link {
-    background-color: var(--earth);
-}
-
-.Mars-link {
-    background-color: var(--mars);
-}
-
-.Jupiter-link {
-    background-color: var(--jupiter);
-}
-
-.Saturn-link {
-    background-color: var(--saturn);
-}
-
-.Uranus-link {
-    background-color: var(--uranus);
-}
-
-.Neptune-link {
-    background-color: var(--neptune);
 }
 
 .toggler {
