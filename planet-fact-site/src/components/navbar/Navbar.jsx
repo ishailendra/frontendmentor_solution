@@ -6,32 +6,31 @@ import { useRef, useState } from 'react';
 import anime from 'animejs';
 
 const Navbar = ({planetData, planetSwitch}) => {    // Destructuring props props.planetData => planetData
-    const animation = useRef(null);
-    const anim = useRef(null);
+    const menuAnimation = useRef(null);
+    const staggeredAnimation = useRef(null);
 
     const [open, setOpen] = useState(false);
 
     const switchPlanet = planet => {
         planetSwitch(planet)
-        // let ele = document.getElementById('planet-list')
-        // ele.classList.remove('hide')
         setOpen(prev => !prev);
-        staggeredAnime(-550, [0, -270], -50, "easeInOutExpo")
-        animation.current.play();
-        anim.current.play();
+        if (window.screen.width <= 640) {
+            staggeredAnime(-550, [0, -270], -50, "easeInOutExpo")
+            menuAnimation.current.play();
+            staggeredAnimation.current.play();
+        }
     }
 
     const staggeredAnime = (listX, itemX, stagger, ease)  => {
         let ele = document.getElementById('planet-list')
         let elem = document.querySelectorAll("li[class^=Navbar_link-wrapper]")
-        // console.log(elem);
-        animation.current = anime({
+        menuAnimation.current = anime({
             targets: ele,
             translateX: listX,
             autoplay: false,
             easing: ease
         });
-        anim.current = anime({
+        staggeredAnimation.current = anime({
             targets: elem,//'.toggle-item',
             translateX: itemX,
             delay: anime.stagger(stagger),
@@ -39,24 +38,21 @@ const Navbar = ({planetData, planetSwitch}) => {    // Destructuring props props
         })
     }
     const toggleMenu = () => {
-        // let ele = document.getElementById('planet-list')
         
         if (!open) {
             staggeredAnime(2, [-270, 0], 50, "spring(1, 80, 10, 10)")
             
-            animation.current.play();
-            anim.current.play();
-            // ele.classList.add('hide');
+            menuAnimation.current.play();
+            staggeredAnimation.current.play();
             setOpen(prev => !prev)
         }
         else {
-            // ele.classList.remove('hide')
             setOpen(prev => !prev)
          
             staggeredAnime(-550, [0, -270], -50, "easeInOutExpo")
          
-            animation.current.play();
-            anim.current.play();
+            menuAnimation.current.play();
+            staggeredAnimation.current.play();
         }
     }
     
